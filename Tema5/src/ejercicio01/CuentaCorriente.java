@@ -24,8 +24,15 @@ public class CuentaCorriente {
 	 * @param saldo
 	 */
 	public CuentaCorriente(String dni, double saldo) {
-		this.dni = dni;
-		this.saldo = saldo;
+		// igualamos el atributo dni al valor del parámetro si no es nulo y no es una cadena vacia
+		if (dni != null && !dni.equals("")) {
+			this.dni = dni;
+		}
+		// igualamos el valor del atributo saldo al del parámetro de entrada si no es un valor negativo
+		if (saldo >= 0) {
+			this.saldo = saldo;
+		}
+		
 	}
 	
 	/**
@@ -35,9 +42,20 @@ public class CuentaCorriente {
 	 * @param saldo
 	 */
 	public CuentaCorriente(String dni, String nombre, double saldo) {
-		this.dni = dni;
-		this.nombre = nombre;
-		this.saldo = saldo;
+		// igualamos el atributo dni al valor del parámetro si no es nulo y no es una cadena vacia
+		if (dni != null && !dni.equals("")) {
+			this.dni = dni;
+		}
+		
+		// igualamos el valor del atributo saldo al del parámetro de entrada si no es un valor negativo
+		if (saldo >= 0) {
+			this.saldo = saldo;
+		}
+		
+		// igualamos el atributo nombre al valor del parámetro si no es nulo y no es una cadena vacia
+		if (nombre != null && !nombre.equals("")) {
+			this.nombre = nombre;
+		}
 	}
 	
 	/**

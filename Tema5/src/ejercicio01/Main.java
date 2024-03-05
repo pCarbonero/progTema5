@@ -22,6 +22,9 @@ public class Main {
 		if (!puedeSacar) {
 			System.out.println("No hay dinero suficente para esa operación");
 		}
+		else {
+			System.out.println("Operación realizada con éxito ");
+		}
 		
 		cc.mostrarInfo();
 	}
