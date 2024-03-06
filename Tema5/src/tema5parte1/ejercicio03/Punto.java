@@ -1,4 +1,4 @@
-package ejercicio03;
+package tema5parte1.ejercicio03;
 /**
  * clase que contiene la psociion de u punto en un plano
  * @author pcarbonero

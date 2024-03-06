@@ -1,4 +1,4 @@
-package ejercicio02;
+package tema5parte1.ejercicio02;
 
 import java.io.ObjectInputStream.GetField;
 

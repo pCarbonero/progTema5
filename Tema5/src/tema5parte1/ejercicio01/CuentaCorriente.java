@@ -1,4 +1,4 @@
-package ejercicio01;
+package tema5parte1.ejercicio01;
 
 /**
  * Clase que define la cuenta corriente de un cliente

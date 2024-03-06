@@ -1,4 +1,4 @@
-package ejercicio04;
+package tema5parte1.ejercicio04;
 
 public class Main {
 
