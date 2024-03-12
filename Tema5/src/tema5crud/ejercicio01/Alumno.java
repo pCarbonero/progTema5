@@ -74,7 +74,7 @@ public class Alumno {
 	 * Metodo que devuelve la informacion del al clae en una cadena
 	 */
 	public String toString() {
-		return "Nombre: " + this.nombre + "\n" + "Nota media: " + this.notaMedia;	
+		return this.nombre + ": " + this.notaMedia;	
 	}
 	
 }// class
