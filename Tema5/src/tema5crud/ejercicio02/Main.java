@@ -3,10 +3,10 @@ package tema5crud.ejercicio02;
 import java.util.Scanner;
 
 public class Main {
-
+	// scaner
+	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-		// scaner
-		Scanner sc = new Scanner(System.in);
+
 		//obj articulo
 		Articulo art;
 		//  variables para los atributos de la clase articulo
@@ -34,36 +34,11 @@ public class Main {
 				break;
 				}
 			case 2: {
-				System.out.println("Introduzca el código");
-				codigo = sc.nextInt();
-				sc.nextLine();
-				
-				System.out.println("Introduzca la descripción");
-				descripcion = sc.nextLine();
-				
-				System.out.println("Introduzca el precio compra");
-				precioCompra = sc.nextDouble();
-				sc.nextLine();
-				
-				System.out.println("Introduzca el precio venta");
-				precioVenta = sc.nextDouble();
-				sc.nextLine();
-				
-				System.out.println("Introduzca el stock");
-				stock = sc.nextInt();
-				sc.nextLine();
-				
-				art = new Articulo(codigo, descripcion, precioCompra, precioVenta, stock);
-
-				if(ListaArticulos.alta(art)) {
-					System.out.println("Artículo añadido correctamente");
-				} else {
-					System.out.println("No se ha podido añadir el artículo");
-				}
+				altaArticulo();
 				break;
 				}
 			case 3: {
-				// Baja
+				bajaArticulo();
 				break;
 				}
 			case 4: {
@@ -75,13 +50,9 @@ public class Main {
 				cantidad = sc.nextInt();
 				sc.nextLine();
 				System.out.println();
+				art = new Articulo(codigo);
+
 				
-				if(ListaArticulos.entradaM(codigo)) {
-					System.out.println("Cantidad añadida ");
-				}
-				else {
-					System.out.println("Hubo un error. Operación interrumpida");
-				}
 				System.out.println();
 				break;
 				}
@@ -103,7 +74,69 @@ public class Main {
 		
 		
 	}
+
+	/**
+	 * Metodo qeu realiza la segunda opcion del switch case
+	 */
+	private static void altaArticulo() {
+		Articulo art;
+		int codigo;
+		String descripcion;
+		double precioCompra;
+		double precioVenta;
+		int stock;
+		System.out.println("Introduzca el código");
+		codigo = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Introduzca la descripción");
+		descripcion = sc.nextLine();
+		
+		System.out.println("Introduzca el precio compra");
+		precioCompra = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("Introduzca el precio venta");
+		precioVenta = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("Introduzca el stock");
+		stock = sc.nextInt();
+		sc.nextLine();
+		
+		art = new Articulo(codigo, descripcion, precioCompra, precioVenta, stock);
+
+		if(ListaArticulos.alta(art)) {
+			System.out.println("Artículo añadido correctamente");
+		} else {
+			System.out.println("No se ha podido añadir el artículo");
+		}
+	}
 	
+	/**
+	 * Metodo qeu realiza la tercera opcion del switch case
+	 */
+	private static void bajaArticulo() {
+		Articulo art;
+		int codigo;
+
+		System.out.println("Introduzca el código");
+		codigo = sc.nextInt();
+		sc.nextLine();
+		
+		
+		art = new Articulo(codigo);
+
+		if(ListaArticulos.baja(art)) {
+			System.out.println("Artículo borrado correctamente");
+		} else {
+			System.out.println("No se ha podido borrar el artículo");
+		}
+	}
+	
+	/**
+	 * Metodo que se encarga de imprimir el menu
+	 */
 	static void menu() {
 		System.out.println("----MENU----");
 		System.out.println("ELIGE UNA OPCION:\n");

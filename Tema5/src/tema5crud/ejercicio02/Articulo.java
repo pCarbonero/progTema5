@@ -65,6 +65,12 @@ public class Articulo {
 		
 	} // fin constructor
 	
+	public Articulo(int codigo) {
+		if(codigo>0) {
+			this.codigo = codigo;
+		}
+	}
+	
 	
 	//GETTERS ANF SETTERS
 	public int getCodigo() {
@@ -100,31 +106,6 @@ public class Articulo {
 	
 	
 	//METODOS
-	/**
-	 * metodo que añade mercancia
-	 * @param cantidad cantidad qeu se le añade a stock
-	 */
-	public void entradaMercancia(int cantidad) {
-		this.stock += cantidad;
-	}
-	
-	/**
-	 * Metodo que reduce stock
-	 * @param cantidad cantidad qeu se le quita a stock
-	 * @return si es posible o no realizar la retirada
-	 */
-	public boolean salidaMercancia(int cantidad) {
-		boolean esPosible = true;
-		
-		if (this.stock >= cantidad) {
-			this.stock -= cantidad;
-		}
-		else {
-			esPosible = false;
-		}
-		
-		return esPosible;
-	}
 	
 	// TO STRING
 	@Override
