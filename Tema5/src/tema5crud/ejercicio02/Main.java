@@ -6,16 +6,17 @@ public class Main {
 	// scaner
 	static Scanner sc = new Scanner(System.in);
 	public static void main(String[] args) {
-
-		//obj articulo
 		Articulo art;
+		int cantidad;
+		/*//obj articulo
+		
 		//  variables para los atributos de la clase articulo
 		int codigo;
 		String descripcion;
 		double precioCompra;
 		double precioVenta;
 		int stock;
-		int cantidad;
+		int cantidad;*/
 		
 		int opc = 0;
 		
@@ -31,6 +32,7 @@ public class Main {
 			switch (opc) {
 			case 1: {
 				// LISTADO
+				ListaArticulos.listado();
 				break;
 				}
 			case 2: {
@@ -42,22 +44,24 @@ public class Main {
 				break;
 				}
 			case 4: {
-				System.out.println("Dime el codigo del articulo que quieres añadir mercancia ");
-				codigo = sc.nextInt();
-				sc.nextLine();
-				System.out.println();
-				System.out.println("Dime la cantidad a añadir ");
-				cantidad = sc.nextInt();
-				sc.nextLine();
-				System.out.println();
-				art = new Articulo(codigo);
-
-				
-				System.out.println();
+				modifArt();
 				break;
 				}
 			case 5: {
 				// Entrada de mercancia
+				System.out.println("Dime la cantidad a añadir ");
+				cantidad = sc.nextInt();
+				sc.nextLine();
+				
+				art = rellenaMercancia();
+				if(ListaArticulos.rellenaM(cantidad, art)) {
+					System.out.println("MERCANCIA ACT");
+				}
+				else {
+					System.out.println("ERROR");
+				}
+				
+				System.out.println();
 				break;
 				}
 			case 6: {
@@ -132,6 +136,72 @@ public class Main {
 		} else {
 			System.out.println("No se ha podido borrar el artículo");
 		}
+	}
+	
+	/**
+	 * Metodo que modifica un articulo del array
+	 */
+	static void modifArt() {
+		Articulo art;
+		Articulo newArt;
+		int codigo;
+		String descripcion;
+		double precioCompra;
+		double precioVenta;
+		int stock;
+		
+		System.out.println("Introduzca el código");
+		codigo = sc.nextInt();
+		sc.nextLine();
+		
+		// objeto que vamos a sustituir
+		art = new Articulo(codigo);
+		
+		// preguntamos por el nuevo articulo
+		System.out.println("Introduzca el nuevo código");
+		codigo = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.println("Introduzca la descripción");
+		descripcion = sc.nextLine();
+		
+		System.out.println("Introduzca el precio compra");
+		precioCompra = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("Introduzca el precio venta");
+		precioVenta = sc.nextDouble();
+		sc.nextLine();
+		
+		System.out.println("Introduzca el stock");
+		stock = sc.nextInt();
+		sc.nextLine();
+		
+		newArt = new Articulo(codigo, descripcion, precioCompra, precioVenta, stock);
+		
+		if (ListaArticulos.modificacion(art, newArt)) {
+			System.out.println("Articulo sustituido");
+		}
+		else {
+			System.out.println("Error. No se pudo sustituir el artículo");
+		}
+	}
+	
+	
+	static Articulo rellenaMercancia() {
+		int codigo;
+		
+		Articulo art;
+		
+		System.out.println("Dime el codigo del articulo que quieres añadir mercancia ");
+		codigo = sc.nextInt();
+		sc.nextLine();
+		System.out.println();
+
+		System.out.println();
+		
+		art = new Articulo(codigo);
+		return art;
 	}
 	
 	/**

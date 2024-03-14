@@ -6,6 +6,22 @@ package tema5crud.ejercicio02;
 public class ListaArticulos {
 	static Articulo[] articulos = new Articulo[20];
 	
+	
+	
+	
+	
+	
+	
+	static void listado() {
+		int i = 0;
+		while (i < articulos.length && articulos[i] != null) {
+			System.out.println(articulos[i]);
+			i++;
+		}
+	}
+	
+	
+	
 	/**
 	 * Metodo para dar de alta un nuevo artículo
 	 * @param nuevoArticulo
@@ -32,19 +48,13 @@ public class ListaArticulos {
 	
 	//
 	static boolean baja(Articulo selecArticulo) {
-		int i = 0;
 		boolean borrado = false;
 		int pos = buscaArt(selecArticulo);
 		
 		// si ha encontrado el objeto entonces
 		if (pos != -1) {
-			while(i < articulos.length && !borrado) {
-				if (articulos[i].equals(selecArticulo)) {
-					articulos[i] = null;
-					borrado = true;
-				}		
-				i++;	
-			}// while loop
+			articulos[pos] = null;
+			borrado = true;
 		}	
 		return borrado;		
 	}// fin baja
@@ -68,13 +78,13 @@ public class ListaArticulos {
 	
 	
 	//MOdi
-	static boolean modificacion(int cod, Articulo art) {
+	static boolean modificacion(Articulo oldArt, Articulo art) {
 		boolean modif = false;
 		int i = 0;
 		
 		while(i < articulos.length && !modif) {
 			
-			if (articulos[i] != null && articulos[i].getCodigo() == cod) {
+			if (articulos[i] != null && articulos[i].equals(oldArt)) {
 				articulos[i] = art;
 				modif = true;
 			}			
@@ -83,6 +93,34 @@ public class ListaArticulos {
 		
 		return modif;
 	}
+	
+	//
+	static boolean rellenaM(int cantidad, Articulo art) {
+		boolean rellenado = false;
+		int pos = buscaArt(art);
+		
+		if (pos != -1) {
+			articulos[pos].setStock(articulos[pos].getStock()+cantidad);
+			rellenado = true;
+		}
+		
+		return rellenado;
+	}
+	
+	//
+	//
+	static boolean vaciaM(int cantidad, Articulo art) {
+		boolean vaciado = false;
+		int pos = buscaArt(art);
+		
+		if (pos != -1) {
+			articulos[pos].setStock(articulos[pos].getStock()-cantidad);
+			vaciado = true;
+		}
+		
+		return vaciado;
+	}
+	 
 	
 	
 }// calse
